@@ -40,7 +40,8 @@ def get_returns(pct_changes,numDataPoints):
 	while(i!=num_returns):
 		summing = 0
 		for factor_change in pct_changes:
-			w = np.random.uniform(0.2,1)
+			# MUST FIGURE OUT CORRECT RANGES FOR THE WEIGHTS AND THEIR CORRESPONDING FACTORS
+			w = np.random.uniform(0.2,1.5)
 			summing+=w*factor_change[i]
 			# print(factor_change[i])
 		rets.append(summing)
@@ -50,7 +51,7 @@ def get_returns(pct_changes,numDataPoints):
 
 
 def write_csv():
-	myData = [factors,pct_changes]
+	myData = [factors,pct_changes,returns]
 	myFile = open('testingScript.csv', 'w')
 	with myFile:
 		writer = csv.writer(myFile)
@@ -69,11 +70,7 @@ returns = get_returns(pct_changes,numDataPoints)
 print(max(returns))
 print(min(returns))
 print(sum(returns)/len(returns))
-# for l in pct_changes:
-# 	print(l)
-
-# returns = get_returns(pct_changes,numDataPoints)
-# write_csv()
+write_csv()
 
 
 

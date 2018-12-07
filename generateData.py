@@ -37,7 +37,7 @@ def get_returns(pct_changes,numDataPoints):
 	
 	num_returns = numDataPoints
 	i = 0
-	while(i is not num_returns):
+	while(i!=num_returns):
 		summing = 0
 		for factor_change in pct_changes:
 			w = np.random.uniform(0.2,1)
@@ -58,16 +58,13 @@ def write_csv():
 
 
 numFactors=100
-numDataPoints = 1000
+numDataPoints = 10000
 
 
 factors = populate_factors(numFactors)
 std_devs = get_std_devs(factors)
 pct_changes = get_pct_changes(numDataPoints,std_devs)
-# for row in pct_changes:
-# 	print(row[0])
 
-# print()
 returns = get_returns(pct_changes,numDataPoints)
 print(max(returns))
 print(min(returns))

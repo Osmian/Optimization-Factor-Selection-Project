@@ -37,11 +37,13 @@ def get_returns(pct_changes,numDataPoints):
 	
 	num_returns = numDataPoints
 	i = 0
+	tmp = 0
 	while(i!=num_returns):
 		summing = 0
 		for factor_change in pct_changes:
 			# MUST FIGURE OUT CORRECT RANGES FOR THE WEIGHTS AND THEIR CORRESPONDING FACTORS
-			w = np.random.uniform(0.2,1.5)
+			tmp = i/100
+			w = np.random.uniform(0.1+tmp,1.4+tmp)
 			summing+=w*factor_change[i]
 			# print(factor_change[i])
 		rets.append(summing)
